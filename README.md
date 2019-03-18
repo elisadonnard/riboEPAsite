@@ -64,5 +64,32 @@ Then run:
 perl sample_offset_filter_reads.pl sample_offset_long samples_bed ribo2015_BY4741_rep1.bed > offsetreads_ribo2015_BY4741_rep1.bed
 ```
 
-## Step5: 
+## Step5:  Identify codons located in the ribosome E/P/A sites or not (N)
 
+This generates 4 output files per sample (one for each site). From the result, remove the mitochondrial chromosome codons.
+```
+perl ribo_EPAsite.pl numbered_nostart15cd_sc3_ucsc.codons.aa.bed offsetreads_ribo2015_BY4741_rep1.bed
+for i in codon*site_*; do grep -v -w chrM $i > tmp; mv tmp $i; done
+```
+## Step6: Parse results and generate codon frequencies
+
+```
+Rscript codon_frequency.R
+```
+
+## Step7: Merge codon frequencies per site
+
+Create a text file called reference_samples with the names of samples that you want to use as reference
+ex:
+ribo2015_BY4741_rep1
+ribo2015_BY4741_rep2
+ribo2015_BY4741_rep3
+
+Then run:
+```
+Rscript merge_codon_freq.R 
+```
+This will generate initial plots to explore the data and merged tables with all samples per site. 
+It will also normalize the samples in two different ways: 
+1) by the overall frequency of that codon in the reads
+2) by the frequency of that codon relative to its frequency in the 3 codons downstream from the A/P/E site
