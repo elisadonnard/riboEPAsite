@@ -80,10 +80,15 @@ Rscript codon_frequency.R
 ## Step7: Merge codon frequencies per site
 
 Create a text file called reference_samples with the names of samples that you want to use as reference
-ex:
+
+example:
+
+```
+cat reference_samples
 ribo2015_BY4741_rep1
 ribo2015_BY4741_rep2
 ribo2015_BY4741_rep3
+```
 
 Then run:
 ```
