@@ -23,7 +23,7 @@ for (i in 1:length(ribosites)) {
   #
   colourCount = length(unique(merged$aa))
   getPalette = colorRampPalette(brewer.pal(9, "Set1"))
-  test$codon <- factor(merged$codon, levels = merged$codon[order(merged$aa, merged$codon)])
+  merged$codon <- factor(merged$codon, levels = merged$codon[order(merged$aa, merged$codon)])
   ggplot_alternative <- function() {ggplot(merged, aes(codon, freqnorm, fill=aa)) + 
       geom_bar(stat = "identity") + scale_fill_manual(values = getPalette(colourCount), name = "Amino acid") + 
       scale_y_continuous() + xlab("Codon") + ylab("normalized frequency") + 
