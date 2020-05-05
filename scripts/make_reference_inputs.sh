@@ -5,7 +5,7 @@ grep -w CDS tmp_files/CDS_ref.ucsc.gtf | sed "s/CDS/exon/" > tmp_files/oo
 cat tmp_files/oo >> tmp_files/CDS_ref.ucsc.gtf
 egrep "CDS|codon" tmp_files/CDS_ref.ucsc.gtf > tmp_files/tmp.gtf
 gtfToGenePred tmp_files/tmp.gtf tmp_files/tmp.genepred
-genePredToBed tmp_files/tmp.genepred tmp_files/tmp.bed
+genePredToBed tmp_files/tmp.genepred > tmp_files/tmp.bed
 perl new_ref_ribo_reference.pl tmp_files/CDS_ref_gene_transc_ref.rsem tmp_files/tmp.bed > tmp_files/result.bed
 sed "s/___//" tmp_files/result.bed > tmp_files/riboprofiling_ref_CDS.bed
 bedToGenePred tmp_files/result.bed tmp_files/result.genepred

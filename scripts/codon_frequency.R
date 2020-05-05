@@ -2,7 +2,7 @@ library("RColorBrewer")
 library("ggplot2")
 library("scales")
 ribosites = list.files(path = ".", pattern = "codon(E|P|A)site.*bed")
-refsites = gsub("codonAsite","codonNsite", ribosites[grep("codonAsite",ribosites)])
+refsites = gsub("codon(A|P|E)site","codonNsite", ribosites)
 for (i in 1:length(ribosites)) {
   sample=read.table(ribosites[i], stringsAsFactors = F)
   ref=read.table(refsites[i], stringsAsFactors = F)
