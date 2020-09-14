@@ -20,6 +20,7 @@ Starting from the GTF annotation file for your species of interest and the genom
 ```
 $ make_reference_inputs.sh ref_ucsc.gtf ref.fa
 ```
+*** recommended: Choose only one transcript isoform per gene, subset the reference files generated. Usually it can be decided based on the highest expressed isoform.
 
 ## Step2: Define the offset for each sample or batch of samples
 

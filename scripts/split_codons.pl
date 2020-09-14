@@ -26,7 +26,7 @@ while (<IN0>) {
 	}
 	$start2 = $tmp[14] + $blocks[$n];
 	$end2 = $start2 + (3 - $len);
-	print "$tmp[0]\t$start1\t$end1\t$start2\t$end2\t$tmp[3]\n";
+	print "$tmp[0]\t$start1\t$end1\t$start2\t$end2\t$strand\t$tmp[3]\n";
     }
     else {
 	$start1 = $tmp[2];
@@ -39,6 +39,6 @@ while (<IN0>) {
 	}
 	$start2 = $tmp[14] + $blocks[$n] + $sizes[$n];
 	$end2 = $start2 - (3 - $len);
-	print "$tmp[0]\t$end2\t$start2\t$end1\t$start1\t$tmp[3]\n";
+	print "$tmp[0]\t$end2\t$start2\t$end1\t$start1\t$strand\t$tmp[3]\n";
     }
 }
